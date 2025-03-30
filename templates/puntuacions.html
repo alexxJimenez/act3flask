@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Puntuacions</title>
+</head>
+<body>
+    <h1>Puntuacions</h1>
+    <h2>Rànquing</h2>
+    <ol>
+        {% for participant, punts in ranking %}
+            <li>{{ participant }}: {{ punts }} punts</li>
+        {% endfor %}
+    </ol>
+    <a href="/">Tornar a l'inici</a>
+</body>
+</html>

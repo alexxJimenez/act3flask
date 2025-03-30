@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Partides</title>
+</head>
+<body>
+    <h1>Partides</h1>
+    <h2>Partides pendents</h2>
+    <ul>
+        {% for partida in partides %}
+            {% if not partida.resultat %}
+                <li>
+                    {{ partida.jugador1 }} vs {{ partida.jugador2 }} - 
+                    <form method="POST" action="/actualitzar_puntuacio" style="display: inline;">
+                        <input type="hidden" name="guanyador" value="{{ partida.jugador1 }}">
+                        <button type="submit">{{ partida.jugador1 }} guanya</button>
+                    </form>
+                    <form method="POST" action="/actualitzar_puntuacio" style="display: inline;">
+                        <input type="hidden" name="guanyador" value="{{ partida.jugador2 }}">
+                        <button type="submit">{{ partida.jugador2 }} guanya</button>
+                    </form>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <h2>Partides jugades</h2>
+    <ul>
+        {% for partida in partides %}
+            {% if partida.resultat %}
+                <li>{{ partida.jugador1 }} vs {{ partida.jugador2 }} - Guanyador: {{ partida.resultat }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <a href="/">Tornar a l'inici</a>
+</body>
+</html>
